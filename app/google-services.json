@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "181971010078",
+    "project_id": "splash-6c769",
+    "storage_bucket": "splash-6c769.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:181971010078:android:30d85499664f86eb1ee40f",
+        "android_client_info": {
+          "package_name": "com.allitian.splash"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYv7AbmTvrMVEHVtAgkfann7NuV-I8hRQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
