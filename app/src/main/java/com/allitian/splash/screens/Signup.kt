@@ -175,7 +175,7 @@ fun Signup(navController: NavHostController){
 
         Box(modifier = Modifier.height(20.dp))
         OutlinedTextField(value= bio, onValueChange = {bio=it}, label = {
-            Text(text = "Bio")
+            Text(text = "Your Bio")
         }, keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Text)
             , singleLine = true, modifier = Modifier.fillMaxWidth())
