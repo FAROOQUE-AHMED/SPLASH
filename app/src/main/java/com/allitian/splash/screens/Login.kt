@@ -136,7 +136,7 @@ fun Login(navController: NavHostController){
 
 
         },modifier = Modifier.fillMaxWidth() ) {
-            Text(text = "Don't have Account ? Signup ", style = TextStyle(
+            Text(text = "Don't have an Account ? Signup ", style = TextStyle(
                 fontWeight = FontWeight.ExtraBold, fontSize = 15.sp
             ))
         }

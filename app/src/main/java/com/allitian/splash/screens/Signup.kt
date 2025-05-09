@@ -179,7 +179,7 @@ fun Signup(navController: NavHostController){
         }, keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Text)
             , singleLine = true, modifier = Modifier.fillMaxWidth())
-
+git
 
 
         Box(modifier = Modifier.height(20.dp))
