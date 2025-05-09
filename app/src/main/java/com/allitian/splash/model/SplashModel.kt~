@@ -1,0 +1,11 @@
+package com.example.splash.model
+
+import android.net.Uri
+
+data class SplashModel(
+
+    val splash:String= "",
+    val userId:String= "",
+    val image: String= "",
+    val timeStamp: String= ""
+)
