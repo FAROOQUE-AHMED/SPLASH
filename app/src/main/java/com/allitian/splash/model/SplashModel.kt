@@ -1,4 +1,4 @@
-package com.example.splash.model
+package com.allitian.splash.model
 
 import android.net.Uri
 

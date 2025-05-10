@@ -1,13 +1,13 @@
-package com.example.splash.viewmodel
+package com.allitian.splash.viewmodel
 
 import android.content.Context
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.splash.model.SplashModel
-import com.example.splash.model.UserModel
-import com.example.splash.utils.SharedPref
+import com.allitian.splash.model.SplashModel
+import com.allitian.splash.model.UserModel
+import com.allitian.splash.utils.SharedPref
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser

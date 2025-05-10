@@ -1,4 +1,4 @@
-package com.example.splash.item_view
+package com.allitian.splash.item_view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -25,9 +25,9 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavHostController
 import coil3.compose.rememberAsyncImagePainter
-import com.example.splash.model.SplashModel
-import com.example.splash.model.UserModel
-import com.example.splash.utils.SharedPref
+import com.allitian.splash.model.SplashModel
+import com.allitian.splash.model.UserModel
+import com.allitian.splash.utils.SharedPref
 
 
 @Composable
@@ -44,7 +44,7 @@ fun SplashItem(
             val (userImage, username, date, time, title, image) = createRefs()
             Image(
                 painter =
-                    painterResource(id = com.example.splash.R.drawable.sample_img),
+                    painterResource(id = com.allitian.splash.R.drawable.logo),
 //            rememberAsyncImagePainter(model = users.imageUrl),
                 contentDescription = "splashscreen", modifier = Modifier
                     .constrainAs(userImage) {

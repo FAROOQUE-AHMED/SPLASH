@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.allitian.splash" />
+                  <option name="mobileSdkAppId" value="1:181971010078:android:30d85499664f86eb1ee40f" />
+                  <option name="projectId" value="splash-6c769" />
+                  <option name="projectNumber" value="181971010078" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

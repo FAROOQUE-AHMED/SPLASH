@@ -1,4 +1,4 @@
-package com.example.splash.screens
+package com.allitian.splash.screens
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,10 +27,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.splash.item_view.SplashItem
-import com.example.splash.item_view.UserItem
-import com.example.splash.viewmodel.HomeViewModel
-import com.example.splash.viewmodel.SearchViewModel
+import com.allitian.splash.item_view.SplashItem
+import com.allitian.splash.item_view.UserItem
+import com.allitian.splash.viewmodel.HomeViewModel
+import com.allitian.splash.viewmodel.SearchViewModel
 import com.google.firebase.auth.FirebaseAuth
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue

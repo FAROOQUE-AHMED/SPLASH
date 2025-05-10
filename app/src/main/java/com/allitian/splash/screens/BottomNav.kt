@@ -1,4 +1,4 @@
-package com.example.splash.screens
+package com.allitian.splash.screens
 
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
@@ -26,8 +26,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.splash.model.BottomNavItem
-import com.example.splash.navigation.Routes
+import com.allitian.splash.model.BottomNavItem
+import com.allitian.splash.navigation.Routes
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 

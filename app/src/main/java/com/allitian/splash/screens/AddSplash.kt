@@ -1,4 +1,4 @@
-package com.example.splash.screens
+package com.allitian.splash.screens
 
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -48,9 +48,9 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import coil3.compose.rememberAsyncImagePainter
-import com.example.splash.navigation.Routes
-import com.example.splash.utils.SharedPref
-import com.example.splash.viewmodel.AddSplashViewModel
+import com.allitian.splash.navigation.Routes
+import com.allitian.splash.utils.SharedPref
+import com.allitian.splash.viewmodel.AddSplashViewModel
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable
@@ -108,7 +108,7 @@ fun AddSplash(navHostController: NavHostController){
 
         val (crossPic, text,logo,username,editText,attachMedia,
         replyText,button,imageBox)= createRefs()
-        Image(painter = painterResource(id = com.example.splash.R.drawable.sample_img), contentDescription = "splashscreen", modifier = Modifier
+        Image(painter = painterResource(id = com.allitian.splash.R.drawable.logo), contentDescription = "splashscreen", modifier = Modifier
             .size(24.dp)
             .constrainAs(crossPic) {
                 top.linkTo(parent.top)
@@ -134,7 +134,7 @@ fun AddSplash(navHostController: NavHostController){
         })
 
         Image(painter =
-            painterResource(id = com.example.splash.R.drawable.sample_img)
+            painterResource(id = com.allitian.splash.R.drawable.logo)
 //            rememberAsyncImagePainter(model = SharedPref.getImage(context))
             , contentDescription = "splashscreen", modifier = Modifier
                 .constrainAs(logo) {
@@ -162,7 +162,7 @@ fun AddSplash(navHostController: NavHostController){
                 }
                 .padding(horizontal = 8.dp, vertical = 8.dp))
         if( imageUri ==null ){
-            Image(painter = painterResource(id = com.example.splash.R.drawable.sample_img), contentDescription = "attach media", modifier = Modifier
+            Image(painter = painterResource(id = com.allitian.splash.R.drawable.logo), contentDescription = "attach media", modifier = Modifier
                 .size(24.dp)
                 .constrainAs(attachMedia) {
                     top.linkTo(editText.bottom)

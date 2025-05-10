@@ -1,4 +1,4 @@
-package com.example.splash.navigation
+package com.allitian.splash.navigation
 
 sealed class Routes(val routes:String) {
 

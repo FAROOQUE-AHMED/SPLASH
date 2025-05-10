@@ -1,4 +1,4 @@
-package com.example.splash.screens
+package com.allitian.splash.screens
 
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -45,11 +45,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.splash.R
+import com.allitian.splash.R
 import androidx.navigation.NavHostController
 import coil3.compose.rememberAsyncImagePainter
-import com.example.splash.navigation.Routes
-import com.example.splash.viewmodel.AuthViewModel
+import com.allitian.splash.navigation.Routes
+import com.allitian.splash.viewmodel.AuthViewModel
 
 @Composable
 fun Signup(navController: NavHostController){
@@ -121,7 +121,7 @@ fun Signup(navController: NavHostController){
             )
         )
         Image(painter = if (imageUri == null) {
-            painterResource(id = R.drawable.person)
+            painterResource(id = R.drawable.logo)
         } else {
             rememberAsyncImagePainter(model = imageUri)
         }, contentDescription = "person",
@@ -179,7 +179,6 @@ fun Signup(navController: NavHostController){
         }, keyboardOptions = KeyboardOptions(
             keyboardType = KeyboardType.Text)
             , singleLine = true, modifier = Modifier.fillMaxWidth())
-git
 
 
         Box(modifier = Modifier.height(20.dp))

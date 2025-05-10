@@ -1,4 +1,4 @@
-package com.example.splash.model
+package com.allitian.splash.model
 
 data class UserModel(
     val email:String = "",

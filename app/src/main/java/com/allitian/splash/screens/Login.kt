@@ -1,4 +1,4 @@
-package com.example.splash.screens
+package com.allitian.splash.screens
 
 
 import android.widget.Toast
@@ -32,8 +32,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.example.splash.navigation.Routes
-import com.example.splash.viewmodel.AuthViewModel
+import com.allitian.splash.navigation.Routes
+import com.allitian.splash.viewmodel.AuthViewModel
 
 
 @Composable

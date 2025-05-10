@@ -1,4 +1,4 @@
-package com.example.splash.utils
+package com.allitian.splash.utils
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE

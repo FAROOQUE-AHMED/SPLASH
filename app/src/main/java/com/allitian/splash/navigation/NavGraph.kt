@@ -1,20 +1,20 @@
-package com.example.splash.navigation
+package com.allitian.splash.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.splash.screens.AddSplash
-import com.example.splash.screens.BottomNav
-import com.example.splash.screens.Home
-import com.example.splash.screens.Login
-import com.example.splash.screens.Notification
-import com.example.splash.screens.OtherUser
-import com.example.splash.screens.Profile
-import com.example.splash.screens.Search
-import com.example.splash.screens.Signup
-import com.example.splash.screens.Splash
-import com.example.splash.screens.SplashScreen
+import com.allitian.splash.screens.AddSplash
+import com.allitian.splash.screens.BottomNav
+import com.allitian.splash.screens.Home
+import com.allitian.splash.screens.Login
+import com.allitian.splash.screens.Notification
+import com.allitian.splash.screens.OtherUser
+import com.allitian.splash.screens.Profile
+import com.allitian.splash.screens.Search
+import com.allitian.splash.screens.Signup
+import com.allitian.splash.screens.Splash
+import com.allitian.splash.screens.SplashScreen
 
 @Composable
 fun NavGraph(navController: NavHostController) {

@@ -1,4 +1,4 @@
-package com.example.splash.screens
+package com.allitian.splash.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -29,12 +29,12 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import coil3.compose.rememberAsyncImagePainter
-import com.example.splash.item_view.SplashItem
-import com.example.splash.model.UserModel
-import com.example.splash.navigation.Routes
-import com.example.splash.utils.SharedPref
-import com.example.splash.viewmodel.AuthViewModel
-import com.example.splash.viewmodel.UserViewModel
+import com.allitian.splash.item_view.SplashItem
+import com.allitian.splash.model.UserModel
+import com.allitian.splash.navigation.Routes
+import com.allitian.splash.utils.SharedPref
+import com.allitian.splash.viewmodel.AuthViewModel
+import com.allitian.splash.viewmodel.UserViewModel
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 
@@ -83,7 +83,7 @@ fun OtherUser(navHostController: NavHostController, uid: String ) {
                 })
 
                 Image(painter =
-                    painterResource(id = com.example.splash.R.drawable.sample_img)
+                    painterResource(id = com.allitian.splash.R.drawable.logo)
 //            rememberAsyncImagePainter(model = users!!.image )
                     , contentDescription = "splashscreen", modifier = Modifier
                         .constrainAs(logo) {
