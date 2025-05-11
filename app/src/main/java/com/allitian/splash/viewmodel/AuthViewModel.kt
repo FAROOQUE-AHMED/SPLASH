@@ -2,6 +2,7 @@ package com.allitian.splash.viewmodel
 
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -116,6 +117,24 @@ class AuthViewModel: ViewModel() {
         auth.signOut()
         _firebaseUser.postValue(null)
 
+    }
+    // Add this to your AuthViewModel
+    fun checkUsernameAvailability(username: String, onResult: (Boolean) -> Unit) {
+        try {
+            Firebase.firestore.collection("users")
+                .whereEqualTo("username", username.lowercase())
+                .get()
+                .addOnSuccessListener { documents ->
+                    onResult(documents.isEmpty)
+                }
+                .addOnFailureListener { exception ->
+                    Log.e("UsernameCheck", "Error checking username", exception)
+                    onResult(false) // Assume not available if error occurs
+                }
+        } catch (e: Exception) {
+            Log.e("UsernameCheck", "Exception checking username", e)
+            onResult(false)
+        }
     }
 
 

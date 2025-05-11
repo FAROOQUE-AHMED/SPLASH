@@ -12,6 +12,7 @@ sealed class Routes(val routes:String) {
     object BottomNav : Routes("bottomNav")
     object Login : Routes("login")
     object Signup : Routes ("signup")
+    object UsernameSelectionScreen : Routes ("username")
     object OtherUser : Routes ("other_users/{data}")
 
 

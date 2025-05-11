@@ -50,83 +50,73 @@ import androidx.navigation.NavHostController
 import coil3.compose.rememberAsyncImagePainter
 import com.allitian.splash.navigation.Routes
 import com.allitian.splash.viewmodel.AuthViewModel
+import androidx.compose.foundation.layout.Spacer
 
 @Composable
-fun Signup(navController: NavHostController){
-    var email  by remember {
-        mutableStateOf("")
-    }
-    var username  by remember {
-        mutableStateOf("")
-    }
-    var name  by remember {
-        mutableStateOf("")
-    }
-    var bio  by remember {
-        mutableStateOf("")
-    }
-    var password  by remember {
-        mutableStateOf("")
-    }
+fun Signup(
+    navController: NavHostController,
+    usernameFromRoute: String? // This comes from navigation
+) {
+    var email by remember { mutableStateOf("") }
+    // Use the passed username as initial value
+    var username by remember { mutableStateOf(usernameFromRoute ?: "") }
+    var name by remember { mutableStateOf("Splash User") } // Default name
+    var bio by remember { mutableStateOf("Hey hlo, i am new at Splash but i am learning really Fast") } // Default bio
+    var password by remember { mutableStateOf("") }
+    var imageUri by remember { mutableStateOf<Uri?>(null) }
 
-    var imageUri by remember {
-        mutableStateOf<Uri?>(null)
-    }
-
-    val authViewModel: AuthViewModel= viewModel()
+    val authViewModel: AuthViewModel = viewModel()
     val firebaseUser by authViewModel.firebaseUser.observeAsState(null)
 
-    val permissionToRequest = if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.TIRAMISU) {
+    val permissionToRequest = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
         android.Manifest.permission.READ_MEDIA_IMAGES
-    }else android.Manifest.permission.READ_EXTERNAL_STORAGE
+    } else android.Manifest.permission.READ_EXTERNAL_STORAGE
 
     val context = LocalContext.current
 
-    val launcher = rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()){
-        uri : Uri? ->
+    val launcher = rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()) { uri: Uri? ->
         imageUri = uri
     }
 
-
-    val permissionLauncher = rememberLauncherForActivityResult(contract = ActivityResultContracts.RequestPermission()){
-        isGranted : Boolean ->
-        if(isGranted){
-
-
-        }else{
-
+    val permissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            launcher.launch("image/*")
         }
     }
 
     LaunchedEffect(firebaseUser) {
-        if (firebaseUser!=null){
-            navController.navigate(Routes.BottomNav.routes){
+        if (firebaseUser != null) {
+            navController.navigate(Routes.BottomNav.routes) {
                 popUpTo(navController.graph.startDestinationId)
-                launchSingleTop=true
+                launchSingleTop = true
             }
-
         }
     }
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .padding(24.dp),
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center) {
-
-
-        Text(text = "SIGN-UP", style = TextStyle(
-            fontWeight = FontWeight.ExtraBold,
-            fontSize = 24.sp,
-
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = "SIGN-UP",
+            style = TextStyle(
+                fontWeight = FontWeight.ExtraBold,
+                fontSize = 24.sp,
             )
         )
-        Image(painter = if (imageUri == null) {
-            painterResource(id = R.drawable.logo)
-        } else {
-            rememberAsyncImagePainter(model = imageUri)
-        }, contentDescription = "person",
 
-
+        Image(
+            painter = if (imageUri == null) {
+                painterResource(id = R.drawable.logo)
+            } else {
+                rememberAsyncImagePainter(model = imageUri)
+            },
+            contentDescription = "profile",
             modifier = Modifier
                 .size(100.dp)
                 .clip(CircleShape)
@@ -142,96 +132,106 @@ fun Signup(navController: NavHostController){
                     } else {
                         permissionLauncher.launch(permissionToRequest)
                     }
-
                 },
-            contentScale = ContentScale.Crop)
+            contentScale = ContentScale.Crop
+        )
 
+        Spacer(modifier = Modifier.height(30.dp))
 
-
-
-        Box(modifier = Modifier.height(50.dp))
-        OutlinedTextField(value= email, onValueChange = {email=it}, label = {
-            Text(text = "Email")
-        }, keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Email)
-            , singleLine = true, modifier = Modifier.fillMaxWidth())
-
-
-        Box(modifier = Modifier.height(20.dp))
-        OutlinedTextField(value= username, onValueChange = {username=it}, label = {
-            Text(text = "username")
-        }, keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Text)
-            , singleLine = true, modifier = Modifier.fillMaxWidth())
-
-
-        Box(modifier = Modifier.height(20.dp))
-        OutlinedTextField(value= name, onValueChange = {name=it}, label = {
-            Text(text = "Name")
-        }, keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Text)
-            , singleLine = true, modifier = Modifier.fillMaxWidth())
-
-
-        Box(modifier = Modifier.height(20.dp))
-        OutlinedTextField(value= bio, onValueChange = {bio=it}, label = {
-            Text(text = "Your Bio")
-        }, keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Text)
-            , singleLine = true, modifier = Modifier.fillMaxWidth())
-
-
-        Box(modifier = Modifier.height(20.dp))
-
-        OutlinedTextField(value= password, onValueChange = {password=it}, label = {
-            Text(text = "Password")
-        }, keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Password)
-            , singleLine = true, modifier = Modifier.fillMaxWidth())
-
-
-
-        Box(modifier = Modifier.height(30.dp))
-
-        ElevatedButton(onClick = {
-            if (name.isEmpty() || email.isEmpty() || bio.isEmpty() || password.isEmpty()) {
-                Toast.makeText(context, "Please fill all details", Toast.LENGTH_SHORT).show()
-            } else {
-                authViewModel.signup(email, password, name, bio, username, imageUri ?: Uri.EMPTY, context)
-            }
-
-
-
-        },modifier = Modifier.fillMaxWidth() ) {
-            Text(text = "Register", style = TextStyle(
-                fontWeight = FontWeight.ExtraBold, fontSize = 24.sp
+        // Disabled username field (since it was set in previous screen)
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.Start
+        ) {
+            Text(
+                text = "Username",
+                style = TextStyle(
+                    color = Color.Gray,
+                    fontSize = 14.sp
+                ),
+                modifier = Modifier.padding(bottom = 4.dp)
             )
+            Text(
+                text = username,
+                style = TextStyle(
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 16.sp
+                ),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 20.dp)
             )
         }
 
+        Spacer(modifier = Modifier.height(20.dp))
+
+        OutlinedTextField(
+            value = email,
+            onValueChange = { email = it },
+            label = { Text("Email") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+            singleLine = true,
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Spacer(modifier = Modifier.height(20.dp))
 
 
-        Box(modifier = Modifier.height(20.dp))
 
-        TextButton(onClick = {
+        name = "Splash User"
+        bio = "Hey hlo, i am new at Splash but i am learning really Fast"
 
-            navController.navigate(Routes.Login.routes){
-                popUpTo(navController.graph.startDestinationId)
-                launchSingleTop=true
-            }
+        OutlinedTextField(
+            value = password,
+            onValueChange = { password = it },
+            label = { Text("Password") },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            singleLine = true,
+            modifier = Modifier.fillMaxWidth()
+        )
 
+        Spacer(modifier = Modifier.height(30.dp))
 
-        },modifier = Modifier.fillMaxWidth() ) {
-            Text(text = "Already registered ? Login", style = TextStyle(
-                fontWeight = FontWeight.ExtraBold, fontSize = 15.sp
+        ElevatedButton(
+            onClick = {
+                if (email.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(context, "Please fill all details", Toast.LENGTH_SHORT).show()
+                } else {
+                    authViewModel.signup(
+                        email = email,
+                        password = password,
+                        name = name,
+                        bio = bio,
+                        username = username,
+                        imageUri = imageUri ?: Uri.EMPTY,
+                        context = context
+                    )
+                }
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Register",
+                style = TextStyle(fontWeight = FontWeight.ExtraBold, fontSize = 24.sp)
             )
+        }
+
+        Spacer(modifier = Modifier.height(20.dp))
+
+        TextButton(
+            onClick = {
+                navController.navigate(Routes.Login.routes) {
+                    popUpTo(navController.graph.startDestinationId)
+                    launchSingleTop = true
+                }
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(
+                text = "Already registered? Login",
+                style = TextStyle(fontWeight = FontWeight.ExtraBold, fontSize = 15.sp)
             )
         }
     }
+}
 
-}
-@Preview(showBackground = true)
-@Composable
-fun SignupPreview(){
-//    Signup()
-}

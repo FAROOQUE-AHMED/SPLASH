@@ -128,7 +128,7 @@ fun Login(navController: NavHostController){
 
         TextButton(onClick = {
 
-            navController.navigate(Routes.Signup.routes){
+            navController.navigate(Routes.UsernameSelectionScreen.routes){
                 popUpTo(navController.graph.startDestinationId)
                 launchSingleTop=true
             }
